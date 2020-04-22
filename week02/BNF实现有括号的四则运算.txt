@@ -1,0 +1,20 @@
+基本单位：
+<Number> ::= "0" | "1" | "2" | "3" | "4" | ... ... | "9"
+<DecimalNumber> ::= "0" | (("1" | "2" | "3" | "4" | ... ... | "9") <Number>*)
+
+加减法：
+<addExpression> ::= <DecimalNumber> |
+  <addExpression> "+" <DecimalNumber> |
+  <addExpression> "-" <DecimalNumber>
+
+乘除法：
+<MultiplicativeExpression> ::= <DecimalNumber> |
+  <MultiplicativeExpression> "*" <DecimalNumber> |
+  <MultiplicativeExpression> "/" <DecimalNumber>
+
+四则运算：
+<allExpression> ::= <DecimalNumber> | (<addExpression> | <MultiplicativeExpression> | <allExpression>)
+("+" | "-" | "*" | "/")(<addExpression> | <MultiplicativeExpression> | <allExpression>)
+
+有括号优先级四则(可以嵌套的对象)：
+<PrimaryExpress> ::= <DecimalNumber> | "("<allExpression> | <PrimaryExpress>")"
