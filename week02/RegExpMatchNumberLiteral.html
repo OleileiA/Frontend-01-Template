@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+	* 使用一个正则表达式匹配Number直接量
+	* 二级制直接量：0b11/0B11 = 3
+	* 八进制直接量：011/0o11/0O11 = 9
+	* 十六进制直接量：0x/0X
+	* 十进制：12 / 12.12 /  .12  /  12.
+	* 科学计数法：e/E
+	* 10e10
+	* -10e-10
+	* .1e10
+	* 1.e10
+	*  */
+
+	let bianryReg = /^[+-]?0[bB][01]+$/;
+	let octonaryReg = /^[+1]?0[oO]?[0-7]+$/;
+	let hexReg = /^[+-]?0[xX][\da-fA-F]+$/;
+	let decimalReg = /^[+-]?([1-9]\d*)?\.?\d*$/;
+	let scienceReg = /^[+-]?([1-9]\d*)?\.?\d*[eE][+-]?\d+$/;
+	let answer = /(^[+-]?0[bB][01]+$)|(^[+1]?0[oO]?[0-7]+$)|(^[+-]?0[xX][\da-fA-F]+$)|(^[+-]?([1-9]\d*)?\.?\d*$)|(^[+-]?([1-9]\d*)?\.?\d*[eE][+-]?\d+$)/;
+</script>
+</body>
+</html>
