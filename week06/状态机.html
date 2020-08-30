@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 找到字符串中的a
+function find_a(str) {
+    for (let char of str) {
+        if (char === 'a') return true;
+    }
+    return false;
+}
+console.log(find_a("i am groot"));
+
+// 找到字符串中的ab
+function find_ab(str) {
+    let flag = false;
+    for (let char of str) {
+        if (char === 'a') flag = true;
+        else if (flag && char === 'b') return true;
+        else flag = false;
+    }
+    return false;
+}
+console.log(find_ab("i ab groot"));
+
+// 找到字符串abcde
+function find_abcde(str) {
+    let findA = false;
+    let findB = false;
+    let findC = false;
+    let findD = false;
+    // let findE = false;
+    for (let char of str) {
+        if (char === 'a') findA = true;
+        else if (findA && char === 'b') findB = true;
+        else if (findB && char === 'c') findC = true;
+        else if (findC && char === 'd') findD = true;
+        else if (findD && char === 'e') return true;
+        else {
+            findA = false;
+            findB = false;
+            findC = false;
+            findD = false;
+        }
+    }
+    return false;
+}
+console.log(find_abcde("abcdf"));
+
+// 但是这样下去并不是长远之计，因为随着字符串的长度的增加，不可能一直写下去。
+// 这个时候我们就需要状态机, 用每一个函数表示一个状态
+function match(str) {
+    let state = start;
+    for (let c of str) {
+        state = state(c);
+    }
+    return state === end;
+}
+function start(c) {
+    if (c === 'a')
+        return finda;
+    else
+        return start;
+}
+function finda(c) {
+    if (c === 'b')
+        return findb;
+    else
+        return start;
+}
+function findb(c) {
+    if (c === 'c')
+        return findc;
+    else
+        return start;
+}
+
+function findc(c) {
+    if (c === 'd')
+        return end;
+    else
+        return start;
+}
+
+function end() {
+    return end;
+}
+
+
+console.log("状态机", match("abcde"));
+</script>
+</body>
+</html>

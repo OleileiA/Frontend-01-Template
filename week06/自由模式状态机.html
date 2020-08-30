@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 问题：如何实现自由模式的状态机
+// 其中的pattern：可能是任何形式，abc, abcd, ababc, abcabx 。。。 。。。
+function match(pattern, str) {
+
+}
+function countNum(c, str) {
+    let count = 0;
+    for (let char of str) {
+        if (c === char) count++;
+    }
+    return count;
+}
+
+
+console.log(match("abc", "abcd"));
+</script>
+</body>
+</html>
